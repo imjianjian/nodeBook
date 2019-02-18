@@ -6,8 +6,11 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "run": "electron ./dist",
+    "start": "electron ./dist",
     "build": "node  build/build.js",
+    "pack:win": "electron-packager ./dist todolist --platform=win32 --arch=x64 --out ./out --app-version 1.0.0  --overwrite --asar",
+    "pack:linux": "electron-packager ./dist todolist --platform=linux --arch=x64 --out ./out --app-version 1.0.0  --overwrite --asar",
+    "pack:mac": "electron-packager ./dist todolist --platform=darwin --arch=x64 --out ./out --app-version 1.0.0  --overwrite --asar",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
@@ -41,6 +44,7 @@
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
     "electron": "^4.0.4",
+    "electron-packager": "^13.0.1",
     "eslint": "^4.15.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
@@ -79,7 +83,6 @@
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0",
     "webpack-parallel-uglify-plugin": "^1.1.0"
   },

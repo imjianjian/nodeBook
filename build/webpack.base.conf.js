@@ -84,6 +84,13 @@ module.exports = {
       }
     ]
   },
+  plugins:[
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, '../package.json'),
+      to: path.resolve(__dirname, '../dist'),
+      ignore: ['.*']
+    }])
+  ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).
