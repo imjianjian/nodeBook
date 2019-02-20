@@ -1,12 +1,12 @@
 <template>
   <div>
     <!-- header -->
-    <van-nav-bar title='todo' id='header' @click-left='addtodo' @click-right='closeWin'>
+    <van-nav-bar title='nodebook' id='header' @click-left='addnode' @click-right='closeWin'>
       <van-icon name='plus' slot='left' style='-webkit-app-region: no-drag'/>
       <van-icon name='cross' slot='right' style='-webkit-app-region: no-drag'/>
     </van-nav-bar>
-    <!-- todo -->
-    <div id='todolist'>
+    <!-- node -->
+    <div id='container'>
       <div id='search'>
         <van-search v-model='searchKeyword' placeholder='search...'></van-search>
       </div>
@@ -22,7 +22,7 @@
 import electron from 'electron'
 let ipcRenderer = electron.ipcRenderer
 export default {
-  name: 'Todolist',
+  name: 'nodelist',
   data () {
     return {
       searchKeyword: '',
@@ -32,9 +32,12 @@ export default {
     }
   },
   methods: {
-    // 增加todo
-    addtodo () {
-      this.$router.push('/todoview')
+    // 增加node
+    addnode () {
+      this.$router.push({
+        name:'editview',
+        params:{code:''}
+      })
     },
     // 关闭窗口
     closeWin () {
@@ -58,7 +61,7 @@ export default {
     // 点击list
     listClick(code){
       this.$router.push({
-        name:'todoview',
+        name:'editview',
         params:{code:code}
       })
     }
@@ -80,15 +83,6 @@ export default {
 }
 </script>
 <style>
-#header{
-  width: 100%;
-  position: fixed;
-  top: 0;
-  -webkit-app-region: drag;
-}
-#todolist {
-  padding-top: 46px;
-}
 #search {
   position: fixed;
   top: 46px;

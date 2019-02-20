@@ -13,10 +13,12 @@ let win
 function createWindow () {
   // 创建浏览器窗口。
   win = new BrowserWindow({
-    width: 380,
-    height: 700,
-    minWidth: 380,
-    minHeight: 500,
+    width: 1000,
+    height: 900,
+    minWidth: 800,
+    maxWidth: 1366,
+    minHeight: 900,
+    maxHeight: 900,
     webPreferences: {
       nodeIntegration: true
     },
@@ -31,7 +33,7 @@ function createWindow () {
   win.loadFile(path.join(__dirname, './index.html'))
 
   // 打开开发者工具
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools()
 
   // 当 window 被关闭，这个事件会被触发。
   win.on('closed', () => {

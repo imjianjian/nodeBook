@@ -3,14 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// import MintUI from 'mint-ui'
-// import 'mint-ui/lib/style.css'
-// import '@/assets/fontawesome-free-5.7.2-web/css/all.min.css'
-
-// Vue.use(MintUI)
 import Vant from 'vant'
 import 'vant/lib/index.css'
 import 'vant/lib/icon/local.css'
+
+import './assets/public.css'
 
 Vue.use(Vant)
 

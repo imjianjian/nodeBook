@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import TodoList from '../components/TodoList'
-import TodoView from '../components/TodoView'
+import NodeList from '../components/NodeList'
+import EditView from '../components/EditView'
 
 Vue.use(Router)
 
@@ -9,13 +9,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'todolist',
-      component: TodoList
+      name: 'nodelist',
+      component: NodeList
     },
     {
-      path: '/todoview',
-      name: 'todoview',
-      component: TodoView
+      path: '/editview',
+      name: 'editview',
+      component: EditView
     }
   ]
 })
