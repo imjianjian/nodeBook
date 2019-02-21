@@ -22,7 +22,8 @@
 <script>
 import E from 'wangeditor'
 import editorConfig from './editor.config'
-import {getDate} from '../utils/utils'
+import {getDate} from '../utils/date'
+import {getNode,setNode,delNode} from '../utils/localstroage'
 export default {
   name: 'nodeView',
   data () {
@@ -41,12 +42,13 @@ export default {
       let nodetext = this.editor.txt.text()
       let nodemsg = this.editor.txt.html()
       if(this.nodetitle==''&&nodetext!=''){
-        this.popupMsg='请输入标题';
-        this.popupShow=true;
+        // this.popupMsg='请输入标题';
+        // this.popupShow=true;
+        alert('请输入标题')
         return;
       }
       // 保存数据
-      if(this.nodetitle!=''){
+      if(this.nodetitle!=''&&nodetext!=''){
         let code = '';
         
         if(this.nodeKey=='')
@@ -54,18 +56,18 @@ export default {
         else
           code = this.nodeKey
 
-        localStorage.setItem(code,JSON.stringify({
+        setNode({
+          code:code,
           title:this.nodetitle,
           msg:nodemsg
-        }))
+        })
       }
       
       this.$router.back('/')
     },
     del () {
       if(this.nodeKey=='')return;
-      
-      localStorage.removeItem(this.nodeKey)
+      delNode(this.nodeKey)
       this.$router.back('/')
     }
   },
@@ -77,8 +79,8 @@ export default {
 
     if(this.$route.params.code!=''){
       this.nodeKey = this.$route.params.code
-      this.nodetitle =  JSON.parse(localStorage.getItem(this.nodeKey)).title
-      this.editor.txt.html(JSON.parse(localStorage.getItem(this.nodeKey)).msg)
+      this.nodetitle =  getNode(this.nodeKey).title
+      this.editor.txt.html(getNode(this.nodeKey).msg)
     }
   },
 }

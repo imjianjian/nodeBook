@@ -4,7 +4,7 @@
   top: 0;
   -webkit-app-region: drag;
   z-index: 100 !important;
-  background: darkturquoise;
+  background: #549688;
 }
 
 #container {
